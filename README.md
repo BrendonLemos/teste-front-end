@@ -1,31 +1,86 @@
-# Teste Econverse: Vaga Desenvolvedor Front-End
+# Teste Front-End Econverse
 
-### Vem ser #Econverse!
+Aplicação de vitrine de produtos desenvolvida como teste técnico para a vaga de Desenvolvedor Front-End da Econverse.
 
-Segue abaixo as instruções para a execução do teste.
+## Tecnologias utilizadas
 
-## Instruções
-- Faça um fork desse projeto para a sua conta pessoal do GitHub.
-- Desenvolva a página conforme as **Especificações Técnicas** 
-- Crie um README com as instruções para compilar, testar e rodar o projeto.
-- O link do repositório deverá ser enviado para o e-mail gustavo.cipriano@econverse.com.br com o título **Teste Vaga FrontEnd**
+- React 19
+- TypeScript 5.9
+- Vite 8
+- Sass 1.107
+- ESLint 10
 
-## Especificações Técnicas
-- Desenvolver a pagina em React e TypeScript conforme o [layout](https://www.figma.com/file/rWnzPeoxgynuNPsJjV0VmV/Teste-Front-End-Jr?node-id=0%3A1). Para conseguir pegar os elementos do Figma, basta copiar o layout para sua conta que terá acesso de edição.
-- Montar a [vitrine](https://app.econverse.com.br/teste-front-end/junior/tecnologia/layout/vitrine-produtos.png) de produtos consumindo as informações dos produtos em json atraves desse [Link](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json).
-- Desenvolver a interação ao clicar em um produto conforme layout. A interação consiste em abrir um modal com as principais informações do produto presente no arquivo [JSON](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json) conforme o produto que clicar.
-- Utilizar Pré-processador Sass, Less ou Stylus.
-- Respeitar o Layout pixel a pixel, tamanho das fontes, cores e botões.
-- Não Utilizar bibliotecas UI como Bootstrap, Foundation, ou afins.
+## Pré-requisitos
 
-## Pontos Extras
-- Utilizar Boas práticas de SEO
-- Uso de HTML semântico
+- Node.js 20.19 ou superior da série 20, ou Node.js 22.12 ou superior.
+- npm, incluído na instalação do Node.js.
 
-## O que avaliaremos em seu teste
-- Organização do projeto
-- Lógica do código
-- Componentização
-- Alcance dos objetivos propostos
+Essas versões do Node.js atendem aos requisitos do Vite utilizado neste projeto.
 
-**Boa sorte! ;)**
+## Instalação
+
+Clone o repositório e instale as dependências:
+
+```bash
+git clone git@github.com:BrendonLemos/teste-front-end.git
+cd teste-front-end
+npm install
+```
+
+## Como executar
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+O Vite exibirá no terminal o endereço local da aplicação, normalmente `http://localhost:5173/`.
+
+## Build de produção
+
+Gere a versão de produção:
+
+```bash
+npm run build
+```
+
+O comando executa a verificação de tipos do TypeScript e compila a aplicação. Os arquivos gerados ficam na pasta `dist/`.
+
+## Preview da versão de produção
+
+Depois de gerar o build, visualize localmente os arquivos compilados:
+
+```bash
+npm run preview
+```
+
+O Vite exibirá no terminal o endereço local do preview.
+
+## Verificação de código
+
+Execute o ESLint para verificar problemas de qualidade e padronização do código:
+
+```bash
+npm run lint
+```
+
+## Integração com a API
+
+Os produtos são obtidos da API:
+
+[https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json](https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json)
+
+A aplicação consulta o endpoint local `/api/produtos`. Durante o desenvolvimento, o proxy `server.proxy` configurado no Vite encaminha essa chamada ao domínio da Econverse e reescreve o caminho para o arquivo JSON, evitando a restrição de CORS no navegador.
+
+Esse proxy funciona no servidor de desenvolvimento do Vite. Ele não é aplicado automaticamente ao build de produção. Para obter os dados em produção, o ambiente publicado deverá disponibilizar um proxy equivalente ou a API deverá permitir as requisições por meio de CORS.
+
+## Funcionalidades
+
+- Exibição de vitrines com produtos carregados da API, incluindo estados de carregamento, lista vazia e erro.
+- Apresentação do nome, descrição, imagem e preço dos produtos. O valor da parcela exibido nos cards é calculado a partir do preço recebido.
+- Abertura de um modal com os dados do produto selecionado.
+- Ajuste da quantidade no modal e fechamento pelo botão, pela tecla Escape ou clicando fora do conteúdo.
+- Navegação por links internos entre a página inicial, as vitrines, as categorias e a Newsletter.
+
+Os controles de busca, compra e cadastro da Newsletter não estão conectados a serviços ou ações nesta versão.
